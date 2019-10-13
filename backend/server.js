@@ -1,3 +1,4 @@
+const cors = require("cors");
 const mongoose = require("mongoose");
 const getSecret = require("./secret");
 const express = require("express");
@@ -17,6 +18,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
+app.use(cors());
 
 router.get("/", (req, res) => {
   res.json({ message: "HELLOW WORLDUUHHHH" });
