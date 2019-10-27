@@ -3,13 +3,17 @@ import React from "react";
 
 import { GridListTile, GridListTileBar } from '@material-ui/core';
 
+import type { Node } from "react";
+
+
 type Props = {
-  alt: String,
-  label: String,
-  src: String
+  alt: string,
+  label: string,
+  src: string,
+  style?: JSON
 };
 
-const File = (props: Props): React.Node => {
+const ImageTile = (props: Props): Node => {
   const {alt, label, src, style } = props;
 
   return (
@@ -20,4 +24,4 @@ const File = (props: Props): React.Node => {
   );
 };
 
-export default React.memo(File);
+export default React.memo<Props>(ImageTile);

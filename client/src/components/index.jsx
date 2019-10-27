@@ -1,31 +1,31 @@
 // @flow
-import FileBox from "./FileBox";
-import React, { useState } from "react";
+import ImageSelectorPage from "./ImageSelectorPage";
+import React from "react";
+import { HomeRoute, ImageRoute } from "../routes";
+import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
+import SelectedImagePage from "./SelectedImagePage";
 
-import { Link, TextField } from "@material-ui/core";
+import type { Node } from "react";
 
-function App() {
-  const [search, setSearch] = useState("");
-
+const App = (): Node => {
   return (
     <React.Fragment>
-      <h1 id="logo">
-        <Link color="inherit" href={window.location.href} underline="none">
-          segim
-        </Link>
-      </h1>
-      <div id="search-container">
-        <TextField
-          id="search"
-          fullWidth
-          onChange={event => setSearch(event.target.value)}
-          placeholder="Search images"
-          variant="outlined"
-        />
-      </div>
-      <FileBox className="file-box" search={search}></FileBox>
+      <Router>
+        <h1 id="logo">
+          <Link
+            style={{ color: "inherit", textDecoration: "none" }}
+            to={HomeRoute}
+          >
+            segim
+          </Link>
+        </h1>
+        <Switch>
+          <Route exact path={HomeRoute} component={ImageSelectorPage} />
+          <Route path={ImageRoute()} component={SelectedImagePage} />
+        </Switch>
+      </Router>
     </React.Fragment>
   );
-}
+};
 
 export default App;

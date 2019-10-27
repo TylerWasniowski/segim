@@ -58,6 +58,11 @@ img {
     height: 27px;
 }
 
+.segment-image-canvas {
+    height: 60%;
+    width: 80%;
+}
+
 #search-container {
     margin: 25px 0 0 0;
     text-align: center;
