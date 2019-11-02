@@ -6,7 +6,7 @@ import { TextField } from "@material-ui/core";
 
 import type { Node } from "react";
 
-const ImageSelector = (): Node => {
+const ImageSelectorPage = (): Node => {
   const [search, setSearch] = useState<string>("");
 
   return (
@@ -25,4 +25,4 @@ const ImageSelector = (): Node => {
   );
 }
 
-export default ImageSelector;
+export default ImageSelectorPage;

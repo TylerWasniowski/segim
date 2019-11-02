@@ -16,7 +16,7 @@ const SelectedImagePage = (props: Props): Node => {
   useEffect(() => {
     if (!imageId) return;
     
-    fetch(`http://localhost:3001/get-image-data/${imageId}`)
+    fetch(`http://localhost:3001/get-image-payload/${imageId}`)
       .then(res => {
         if (res.status !== 200) throw new Error("Could not get image data.");
         return res;

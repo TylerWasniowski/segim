@@ -13,12 +13,30 @@ body {
     outline: none;
 }
 
+.file {
+    width: fit-content;
+}
+
 .file-box {
     flex: 1;
     width: 100%;
 }
 
 html {
+    height: 100%;
+}
+
+.MuiGridListTile-tile {
+    width: fit-content;
+}
+
+.MuiGridListTileBar-title {
+    font-size: 0.8rem !important;
+    height: 100%;
+    white-space: initial !important;
+}
+
+.MuiGridListTileBar-titleWrap {
     height: 100%;
 }
 
@@ -32,17 +50,22 @@ html {
 }
 
 img {
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
 }
 
 /* Ensure that the GridList always fills width instead of height. */
-.MuiGridListTile-imgFullHeight {
+/* .MuiGridListTile-imgFullHeight {
     top: 50% !important;
     width: 100% !important;
     height: auto !important;
     position: relative !important;
     transform: translateY(-50%) !important;
+} */
+
+#paperjs-container {
+    height: 80%;
+    text-align: center;
+    width: 100%;
 }
 
 #root {
@@ -58,13 +81,13 @@ img {
     height: 27px;
 }
 
-.segment-image-canvas {
-    height: 60%;
-    width: 80%;
-}
-
 #search-container {
-    margin: 25px 0 0 0;
+    margin: 25px 0 35px 0;
     text-align: center;
     width: 50%;
+}
+
+.segment-image-canvas {
+    height: 100%;
+    width: 80%;
 }

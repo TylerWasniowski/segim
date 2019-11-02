@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PhotoMongo = new Schema(
+const ImageMongo = new Schema(
   {},
   { timestamps: true }
 );
 
-PhotoMongo.add({
+ImageMongo.add({
+    // Always required fields
     name: {
       type: String,
       required: true,
@@ -19,11 +20,13 @@ PhotoMongo.add({
       type: Boolean,
       required: true,
     },
+    // Folder-specific fields
     children: {
-      type: [PhotoMongo],
+      type: [ImageMongo],
       required: () => !this.isFile,
     },
-    data: {
+    // File-specific fields
+    fullSizeImage: {
       type: Buffer,
       required: () => this.isFile,
     },
@@ -35,10 +38,14 @@ PhotoMongo.add({
       type: Number,
       required: () => this.isFile,
     },
+    thumbnail: {
+      type: Buffer,
+      required: () => this.isFile,
+    },
     type: {
       type: String,
       required: () => this.isFile,
     }
 });
 
-module.exports = mongoose.model("photo", PhotoMongo);
+module.exports = mongoose.model("image", ImageMongo);
