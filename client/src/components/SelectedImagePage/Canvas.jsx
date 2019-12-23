@@ -15,6 +15,7 @@ const Canvas = ({ imageURL }: Props): Node => {
 
   useEffect(() => {
     const imageEl = document.getElementById(imageId);
+
     if (imageEl) {
       imageEl.onload = () => {
         const scriptEl = document.getElementById(scriptId);
