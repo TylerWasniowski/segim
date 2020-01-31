@@ -1,7 +1,10 @@
-const secrets = {
-  dbUri: "mongodb://localhost:27017/segim"
+const getSecret = key => {
+  // Inside function so process.env is resolved when called
+  const secrets = {
+    dbUri: process.env.MONGODB_URI
+  };
+  
+  return secrets[key];
 };
-
-const getSecret = key => secrets[key];
 
 module.exports = getSecret;
