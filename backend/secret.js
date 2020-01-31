@@ -1,9 +1,9 @@
-const secrets = {
-  dbUri: process.env.MONGODB_URI
-};
-
 const getSecret = key => {
-  console.log(process.env);
+  // Inside function so process.env is resolved when called
+  const secrets = {
+    dbUri: process.env.MONGODB_URI
+  };
+  
   return secrets[key];
 };
 
