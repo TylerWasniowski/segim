@@ -9,7 +9,7 @@ const logger = require("morgan");
 const ImageMongo = require("./schema");
 const sharp = require("sharp");
 
-const API_PORT = 3001;
+const API_PORT = 443;
 const app = express();
 const router = express.Router();
 const upload = multer();
