@@ -16,7 +16,7 @@ if (!process.env.PORT)
 if (!process.env.MONGODB_URI)
   console.warn(`$MONGODB_URI not specified. Defaulting to ${DEFAULT_MONGODB_URI}`);
 
-const PORT = process.env.API_PORT || DEFAULT_PORT;
+const PORT = process.env.PORT || DEFAULT_PORT;
 const MONGODB_URI = process.env.MONGODB_URI || DEFAULT_MONGODB_URI;
 
 const app = express();
