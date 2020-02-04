@@ -8,15 +8,15 @@ const logger = require("morgan");
 const ImageMongo = require("./schema");
 const sharp = require("sharp");
 
-const DEFAULT_API_PORT = 3001;
+const DEFAULT_PORT = 3001;
 const DEFAULT_MONGODB_URI = "mongodb://localhost:27017/segim";
 
-if (!process.env.API_PORT)
-  console.warn(`$API_PORT not specified. Defaulting to ${DEFAULT_API_PORT}`);
+if (!process.env.PORT)
+  console.warn(`$PORT not specified. Defaulting to ${DEFAULT_PORT}`);
 if (!process.env.MONGODB_URI)
   console.warn(`$MONGODB_URI not specified. Defaulting to ${DEFAULT_MONGODB_URI}`);
 
-const API_PORT = process.env.API_PORT || DEFAULT_API_PORT;
+const PORT = process.env.API_PORT || DEFAULT_PORT;
 const MONGODB_URI = process.env.MONGODB_URI || DEFAULT_MONGODB_URI;
 
 const app = express();
@@ -156,4 +156,4 @@ router.get("/get-image-thumbnail/:imageId", (req, res) => {
 
 app.use("/", router);
 
-app.listen(API_PORT, () => console.log(`LISTENING ON ${API_PORT}`));
+app.listen(PORT, () => console.log(`LISTENING ON ${PORT}`));
