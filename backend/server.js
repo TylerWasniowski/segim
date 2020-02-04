@@ -8,7 +8,7 @@ const logger = require("morgan");
 const ImageMongo = require("./schema");
 const sharp = require("sharp");
 
-const DEFAULT_PORT = 3001;
+const DEFAULT_PORT = 80;
 const DEFAULT_MONGODB_URI = "mongodb://localhost:27017/segim";
 
 if (!process.env.PORT)
@@ -33,9 +33,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(logger("dev"));
 app.use(cors());
 
-router.get("/", (req, res) => {
-  res.json({ message: "Index" });
-});
+router.use("/", express.static("../client/build"));
 
 router.get("/getData", (req, res) => {
   ImageMongo.find((err, data) => {
