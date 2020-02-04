@@ -8,7 +8,7 @@ const logger = require("morgan");
 const ImageMongo = require("./schema");
 const sharp = require("sharp");
 
-const DEFAULT_PORT = 80;
+const DEFAULT_PORT = 3001;
 const DEFAULT_MONGODB_URI = "mongodb://localhost:27017/segim";
 
 if (!process.env.PORT)
