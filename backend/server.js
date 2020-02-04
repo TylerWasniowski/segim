@@ -1,6 +1,5 @@
 const cors = require("cors");
 const express = require("express");
-const getSecret = require("./secret");
 const HttpStatus = require("http-status-codes");
 const mongoose = require("mongoose");
 const multer = require("multer");
@@ -9,12 +8,22 @@ const logger = require("morgan");
 const ImageMongo = require("./schema");
 const sharp = require("sharp");
 
-const API_PORT = 443;
+const DEFAULT_API_PORT = 3001;
+const DEFAULT_MONGODB_URI = "mongodb://localhost:27017/segim";
+
+if (!process.env.API_PORT)
+  console.warn(`$API_PORT not specified. Defaulting to ${DEFAULT_API_PORT}`);
+if (!process.env.MONGODB_URI)
+  console.warn(`$MONGODB_URI not specified. Defaulting to ${DEFAULT_MONGODB_URI}`);
+
+const API_PORT = process.env.API_PORT || DEFAULT_API_PORT;
+const MONGODB_URI = process.env.MONGODB_URI || DEFAULT_MONGODB_URI;
+
 const app = express();
 const router = express.Router();
 const upload = multer();
 
-mongoose.connect(getSecret("dbUri"));
+mongoose.connect(MONGODB_URI);
 let db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

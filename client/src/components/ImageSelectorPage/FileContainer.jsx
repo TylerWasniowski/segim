@@ -9,13 +9,13 @@ import { GridList } from "@material-ui/core";
 import type { Node } from "react";
 
 async function getImageDirectory() {
-  return fetch("http://localhost:3001/get-image-directory").then(res =>
+  return fetch("/get-image-directory").then(res =>
     res.json()
   );
 }
 
 async function getImageThumbnail(imageId) {
-  return fetch(`http://localhost:3001/get-image-thumbnail/${imageId}`)
+  return fetch(`/get-image-thumbnail/${imageId}`)
     .then(res => res.blob())
     .then(imageThumbnail => URL.createObjectURL(imageThumbnail));
 }
@@ -36,7 +36,7 @@ async function addImageToDatabase(file, data) {
     })
   );
 
-  return fetch("http://localhost:3001/add-image", {
+  return fetch("/add-image", {
     body: formData,
     method: "POST"
   }).then(res => {
